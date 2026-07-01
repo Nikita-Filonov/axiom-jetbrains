@@ -1,0 +1,20 @@
+<idea-plugin>
+    <id>io.github.nikitafilonov.axiom</id>
+    <name>Axiom Test Runner</name>
+    <vendor url="https://github.com/Nikita-Filonov/axiom">Nikita Filonov</vendor>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.plugins.go</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Green gutter icons on Axiom suite test methods. -->
+        <runLineMarkerContributor
+            language="go"
+            implementationClass="io.github.nikitafilonov.axiom.gutter.AxiomSuiteRunLineMarkerContributor"/>
+
+        <!-- Builds the underlying GoTestRunConfiguration so that Run / Debug /
+             Coverage / Profile all "just work" from the gutter and context menu. -->
+        <runConfigurationProducer
+            implementation="io.github.nikitafilonov.axiom.run.AxiomTestRunConfigurationProducer"/>
+    </extensions>
+</idea-plugin>
