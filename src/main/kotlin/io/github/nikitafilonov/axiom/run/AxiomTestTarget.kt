@@ -61,14 +61,19 @@ data class AxiomTestTarget(
          * Prefers Go plugin's own [GoFile.getImportPath] (which correctly
          * handles vendored/replace directives and multi-module workspaces).
          * Falls back to `<module>/<relPath>` computed from `go.mod` when the
-         * plugin returns nothing.
+         * plugin returns nothing – e.g. in unit tests that run against an
+         * in-memory VFS with no full Go module context set up.
+         *
+         * The fallback goes through the VFS on purpose: it works uniformly
+         * for on-disk projects, in-memory test fixtures and remote workspaces.
          */
         private fun resolveImportPath(file: GoFile, workDir: String): String? {
             file.getImportPath(false)?.takeIf { it.isNotBlank() }?.let { return it }
 
-            val filePath = file.virtualFile?.parent?.path ?: return null
-            val modulePath = GoModuleLocator.readModulePath(workDir) ?: return null
-            val relPath = filePath.removePrefix(workDir).trim('/')
+            val fileDir = file.virtualFile?.parent ?: return null
+            val goMod = GoModuleLocator.findGoMod(fileDir) ?: return null
+            val modulePath = GoModuleLocator.readModulePath(goMod) ?: return null
+            val relPath = fileDir.path.removePrefix(workDir).trim('/')
             return if (relPath.isEmpty()) modulePath else "$modulePath/$relPath"
         }
     }

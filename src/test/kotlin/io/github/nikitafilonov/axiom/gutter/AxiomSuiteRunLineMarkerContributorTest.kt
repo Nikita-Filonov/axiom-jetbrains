@@ -23,30 +23,42 @@ class AxiomSuiteRunLineMarkerContributorTest : BasePlatformTestCase() {
     private val contributor = AxiomSuiteRunLineMarkerContributor()
 
     fun `test marks TestXxx methods of an Axiom NewSuite receiver`() {
-        val file = myFixture.configureByFile("newSuite/suite_test.go") as GoFile
+        val file = configureFixture("newSuite")
 
         assertHasMarker(file, "TestGetCard")
         assertHasMarker(file, "TestListCards")
     }
 
     fun `test marks TestXxx methods of an Axiom NewSuiteFactory receiver`() {
-        val file = myFixture.configureByFile("newSuiteFactory/suite_test.go") as GoFile
+        val file = configureFixture("newSuiteFactory")
         assertHasMarker(file, "TestGetAccount")
     }
 
     fun `test does not mark helper methods without the Test prefix`() {
-        val file = myFixture.configureByFile("newSuite/suite_test.go") as GoFile
+        val file = configureFixture("newSuite")
         assertNoMarker(file, "loadFixture")
     }
 
     fun `test does not mark testify suite methods`() {
-        val file = myFixture.configureByFile("notAxiom/suite_test.go") as GoFile
+        val file = configureFixture("notAxiom")
         assertNoMarker(file, "TestNothing")
     }
 
     fun `test recognises framework-agnostic base suites`() {
-        val file = myFixture.configureByFile("customBaseSuite/suite_test.go") as GoFile
+        val file = configureFixture("customBaseSuite")
         assertHasMarker(file, "TestSomething")
+    }
+
+    /**
+     * Copies the whole fixture directory (Go source + `go.mod`) into the
+     * in-memory project and returns the configured [GoFile] for `suite_test.go`.
+     *
+     * We need the sibling `go.mod` so that [GoModuleLocator] can resolve the
+     * module root – without it every marker computation short-circuits to null.
+     */
+    private fun configureFixture(fixtureDir: String): GoFile {
+        myFixture.copyDirectoryToProject(fixtureDir, fixtureDir)
+        return myFixture.configureFromTempProjectFile("$fixtureDir/suite_test.go") as GoFile
     }
 
     /** Asserts that the contributor produces an Info on the identifier leaf of [methodName]. */
