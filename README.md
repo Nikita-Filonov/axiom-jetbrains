@@ -7,9 +7,9 @@
 🧪 First-class GoLand support for the [**Axiom**](https://github.com/Nikita-Filonov/axiom) Go test framework.
 
 [![Build](https://github.com/Nikita-Filonov/axiom-jetbrains/actions/workflows/build.yml/badge.svg)](https://github.com/Nikita-Filonov/axiom-jetbrains/actions/workflows/build.yml)
-[![Version](https://img.shields.io/jetbrains/plugin/v/32606-axiom-test-runner.svg)](https://plugins.jetbrains.com/plugin/32606-axiom-test-runner)
-[![Downloads](https://img.shields.io/jetbrains/plugin/d/32606-axiom-test-runner.svg)](https://plugins.jetbrains.com/plugin/32606-axiom-test-runner)
-[![Rating](https://img.shields.io/jetbrains/plugin/r/rating/32606-axiom-test-runner.svg)](https://plugins.jetbrains.com/plugin/32606-axiom-test-runner/reviews)
+[![Version](https://img.shields.io/jetbrains/plugin/v/32606.svg?label=version)](https://plugins.jetbrains.com/plugin/32606-axiom-test-runner)
+[![Downloads](https://img.shields.io/jetbrains/plugin/d/32606.svg)](https://plugins.jetbrains.com/plugin/32606-axiom-test-runner)
+[![Rating](https://img.shields.io/jetbrains/plugin/r/rating/32606.svg)](https://plugins.jetbrains.com/plugin/32606-axiom-test-runner/reviews)
 [![License](https://img.shields.io/github/license/Nikita-Filonov/axiom-jetbrains)](./LICENSE)
 
 _Made with ❤️ by [@NikitaFilonov](https://t.me/sound_right)_
@@ -105,9 +105,7 @@ directory-kind run configurations" workarounds needed.
 
 ### From JetBrains Marketplace (recommended)
 
-<a href="https://plugins.jetbrains.com/plugin/32606-axiom-test-runner">
-  <img src="https://user-images.githubusercontent.com/6104164/50148598-7e51fa00-02b0-11e9-9c99-c3ea55d9daf7.png" alt="Get from Marketplace" width="200"/>
-</a>
+[![Get from Marketplace](https://img.shields.io/badge/Get_it_from-JetBrains_Marketplace-FF318C?style=for-the-badge&logo=jetbrains&logoColor=white)](https://plugins.jetbrains.com/plugin/32606-axiom-test-runner)
 
 Or from inside the IDE:
 
