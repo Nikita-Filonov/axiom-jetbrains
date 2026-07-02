@@ -121,10 +121,10 @@ Or from inside the IDE:
 
 ### Supported IDEs
 
-| IDE                          | Version         |
-|------------------------------|-----------------|
-| GoLand                       | 2024.3 and newer |
-| IntelliJ IDEA Ultimate       | 2024.3 and newer *(with the bundled Go plugin enabled)* |
+| IDE                    | Version                                                 |
+|------------------------|---------------------------------------------------------|
+| GoLand                 | 2024.3 and newer                                        |
+| IntelliJ IDEA Ultimate | 2024.3 and newer *(with the bundled Go plugin enabled)* |
 
 ---
 
@@ -171,13 +171,13 @@ Working dir:   <project root with go.mod>
 
 ## ⚙️ How it works
 
-| Component                              | Responsibility                                                                 |
-|----------------------------------------|--------------------------------------------------------------------------------|
-| `AxiomSuiteDetector`                   | Pure PSI check: is this struct passed to `axiom.NewSuite`?                     |
-| `AxiomTestTarget`                      | Resolves method + package import path + module root into a runnable target.    |
-| `GoTestConfigurator`                   | Isolates all Go-plugin-specific API calls (single point of update per version). |
-| `AxiomTestRunConfigurationProducer`    | Standard IntelliJ producer — powers Run / Debug / Coverage / Profile actions.  |
-| `AxiomSuiteRunLineMarkerContributor`   | Adds the green icon and delegates to `ExecutorAction.getActions(0)`.           |
+| Component                            | Responsibility                                                                  |
+|--------------------------------------|---------------------------------------------------------------------------------|
+| `AxiomSuiteDetector`                 | Pure PSI check: is this struct passed to `axiom.NewSuite`?                      |
+| `AxiomTestTarget`                    | Resolves method + package import path + module root into a runnable target.     |
+| `GoTestConfigurator`                 | Isolates all Go-plugin-specific API calls (single point of update per version). |
+| `AxiomTestRunConfigurationProducer`  | Standard IntelliJ producer — powers Run / Debug / Coverage / Profile actions.   |
+| `AxiomSuiteRunLineMarkerContributor` | Adds the green icon and delegates to `ExecutorAction.getActions(0)`.            |
 
 Detection is deliberately **framework-agnostic**: the plugin only looks for
 receiver types that end up inside `axiom.NewSuite(t, new(T))` or
@@ -226,12 +226,12 @@ are configured:
 
 Required GitHub Secrets (see `.github/workflows/release.yml`):
 
-| Secret                 | How to obtain |
-|------------------------|---------------|
-| `PUBLISH_TOKEN`        | https://plugins.jetbrains.com/author/me/tokens |
+| Secret                 | How to obtain                                       |
+|------------------------|-----------------------------------------------------|
+| `PUBLISH_TOKEN`        | https://plugins.jetbrains.com/author/me/tokens      |
 | `CERTIFICATE_CHAIN`    | Full PEM certificate chain used to sign the plugin. |
-| `PRIVATE_KEY`          | Corresponding private key (PEM). |
-| `PRIVATE_KEY_PASSWORD` | Password protecting the private key. |
+| `PRIVATE_KEY`          | Corresponding private key (PEM).                    |
+| `PRIVATE_KEY_PASSWORD` | Password protecting the private key.                |
 
 Step-by-step instructions:
 [Plugin Signing](https://plugins.jetbrains.com/docs/intellij/plugin-signing.html) ·

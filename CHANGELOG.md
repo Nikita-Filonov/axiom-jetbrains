@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-07-02
+
+- Various fixes and improvements.
+
 ## [1.1.0] - 2026-07-01
 
 - Various fixes and improvements.
