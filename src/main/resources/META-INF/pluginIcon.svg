@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <!-- Background circle -->
+  <circle cx="20" cy="20" r="19" fill="#29ABE2"/>
+
+  <!--
+    Letter "A" drawn as paths — no font dependency, renders identically everywhere.
+    Geometry: apex at (20, 9), base at (10, 31) left and (30, 31) right.
+    Stroke width 3, round caps/joins, crossbar at y=23.
+  -->
+  <g stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- Left leg -->
+    <line x1="10" y1="31" x2="20" y2="9"/>
+    <!-- Right leg -->
+    <line x1="30" y1="31" x2="20" y2="9"/>
+    <!-- Crossbar at ~45% height -->
+    <line x1="14.5" y1="23" x2="25.5" y2="23"/>
+  </g>
+</svg>

@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-07-02
+
+- Added logo.
+
 ## [1.2.0] - 2026-07-02
 
 - Various fixes and improvements.
