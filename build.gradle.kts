@@ -71,7 +71,8 @@ intellijPlatform {
 
         ideaVersion {
             sinceBuild = properties("pluginSinceBuild")
-            untilBuild = properties("pluginUntilBuild")
+            // No untilBuild — see gradle.properties for rationale.
+            untilBuild = provider { null }
         }
     }
 
